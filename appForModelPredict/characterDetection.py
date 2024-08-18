@@ -20,7 +20,6 @@ def character_detection(image, sizeOfImage):
     larg_contour = max(contour, key= cv2.contourArea)
     x, y, width, height = cv2.boundingRect(larg_contour)
 
-    # cv2.rectangle(image, (x, y), (x+width, y+height), (255, 0 , 0), 1)
     ratio = 1 - width/height
     if ratio > 0:
         image = image[y - 5:y+height+5, x - int(height*ratio/2) - 5: x+width + 5 + int(height*ratio/2)]
@@ -28,15 +27,8 @@ def character_detection(image, sizeOfImage):
         ratio = 1 - height/width
         image = image[y - 5 - int(width*ratio/2):y+height+5 + int(width*ratio/2), x - 5: x+width + 5]
 
-    # print(ratio)
-    # print(image.shape)
     image = cv2.resize(image, (500, 500))
     image = cv2.blur(image, (9, 9))
     image = cv2.resize(image, sizeOfImage)
-    # cv2.imshow('', image)
-    # cv2.waitKey(0)
 
     return image
-
-# image = cv2.imread('DatasetHanWritten/1/1.png')
-# data = character_detection(image)
