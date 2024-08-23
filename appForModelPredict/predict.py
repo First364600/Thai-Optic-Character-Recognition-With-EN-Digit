@@ -20,7 +20,7 @@ def Predict():
     # image = cv2.resize(image, (50, 50))
     image = character_detection(image, (28, 28))
     pre = model.predict(image[None, :, :])
-    cv2.imshow('', image)
+    # cv2.imshow('', image)
     
-    cv2.waitKey(0)
+    # cv2.waitKey(0)
     return output[np.argmax(pre) - 1]
