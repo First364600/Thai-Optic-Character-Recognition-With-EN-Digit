@@ -7,18 +7,18 @@ import numpy as np
 import os
 from PIL import Image,  EpsImagePlugin
 import cv2
-ghostscript_path = r'C:/Program Files/gs/gs10.03.1/bin/gswin64c.exe'  # Adjust this path
+ghostscript_path = r'C:/Program Files/gs/gs10.03.1/bin/gswin64c.exe'    Adjust this path
 
-# Adding the directory to the PATH environment variable
+  Adding the directory to the PATH environment variable
 os.environ['PATH'] += os.pathsep + os.path.dirname(ghostscript_path)
 
-# Informing PIL of the Ghostscript path
+  Informing PIL of the Ghostscript path
 EpsImagePlugin.gs_windows_binary = ghostscript_path
 
 root = Tk()
 root.title("white Board")
 root.geometry("700x570+150+50")
-root.configure(bg="#f2f3f5")
+root.configure(bg=" f2f3f5")
 root.resizable(False, False)
 
 current_x = 0
@@ -49,23 +49,23 @@ def new_canvas():
 def sentToPredict():
     toPredict()
 
-#icon
-image_icon = PhotoImage(file='data/whiteboard.png')
+ icon
+image_icon = PhotoImage(file='appForModelPredict/data/whiteboard.png')
 
 root.iconphoto(False, image_icon)
 
-color_box = PhotoImage(file='data/lefttap.png')
-Label(root, image=color_box, bg='#f2f3f5').place(x=10, y=20)
+color_box = PhotoImage(file='appForModelPredict/data/lefttap.png')
+Label(root, image=color_box, bg=' f2f3f5').place(x=10, y=20)
 
-eraser = PhotoImage(file='data/eraser.png')
-Button(root, image=eraser, bg='#f2f3f5', command=new_canvas).place(x=30, y=400)
+eraser = PhotoImage(file='appForModelPredict/data/eraser.png')
+Button(root, image=eraser, bg=' f2f3f5', command=new_canvas).place(x=30, y=400)
 
-sent = PhotoImage(file='data/sent.png')
-Button(root, image=sent, bg='#cccccc', command=sentToPredict).place(x=620, y=450)
+sent = PhotoImage(file='appForModelPredict/data/sent.png')
+Button(root, image=sent, bg=' cccccc', command=sentToPredict).place(x=620, y=450)
 
 
 
-colors = Canvas(root, bg='#ffffff', width=37, height=300, bd=0)
+colors = Canvas(root, bg=' ffffff', width=37, height=300, bd=0)
 colors.place(x=30, y=60)
 
 def display_pallete():
@@ -105,7 +105,7 @@ canvas.place(x=100, y=10)
 canvas.bind('<Button-1>', locate_xy)
 canvas.bind('<B1-Motion>', addLine)
 
-#slider
+ slider
 current_value = tk.DoubleVar(value=20)
 output = "Sent to predict"
 
@@ -119,9 +119,9 @@ outputText = ttk.Label(root, text=output, font=('Helvetica', 20))
 outputText.place(x=350, y=530)
 
 def toPredict():
-    canvas.postscript(file = 'data/image1.eps')
-    image = Image.open('data/image1.eps')
-    image.save('data/image.png')
+    canvas.postscript(file = 'appForModelPredict/data/image1.eps')
+    image = Image.open('appForModelPredict/data/image1.eps')
+    image.save('appForModelPredict/data/image.png')
     
     output = Predict()
     outputText.configure(text=output)
@@ -130,7 +130,7 @@ slider = ttk.Scale(root, from_=20, to=100, orient='horizontal', command=slider_c
 slider.place(x=30, y=530)
 
 
-#value label
+ value label
 value_label = ttk.Label(root, text=get_current_value())
 value_label.place(x=27, y=550)
 
